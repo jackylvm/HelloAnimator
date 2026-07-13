@@ -4,7 +4,7 @@
 // 
 // Version: v1.0.0
 // Creator: Jacky(jackylvm@foxmail.com)
-// CreationTime: 2026-07-13 11:15:07
+// CreationTime: 2026-07-13 15:33:19
 // ==============================================
 // History update record:
 // 
@@ -15,15 +15,19 @@ using System;
 using UnityEngine;
 
 // ReSharper disable CheckNamespace
-namespace Animator01
+namespace Animator02
 {
     public class AnimationStateController : MonoBehaviour
     {
-        private static readonly int IsWalkingHash = Animator.StringToHash("IsWalking");
-        private static readonly int IsRunningHash = Animator.StringToHash("IsRunning");
+        private static readonly int VelocityHash = Animator.StringToHash("Velocity");
 
         [SerializeField]
         private Animator animator;
+
+        private const float Acceleration = 0.1f;
+        private const float Deceleration = 0.5f;
+
+        private float _velocity = 0;
 
         /// <summary>
         /// Start 函数会在脚本实例被启用时调用，并且只在第一帧更新之前执行一次。它一般用于：
@@ -40,21 +44,22 @@ namespace Animator01
 
         private void Update()
         {
-            var isWalking = animator.GetBool(IsWalkingHash);
-            var isRunning = animator.GetBool(IsRunningHash);
-            
             var forwardPressed = Input.GetKey(KeyCode.W);
-            var runningPressed = Input.GetKey(KeyCode.LeftShift);
-            
-            if (forwardPressed != isWalking)
+            // var runningPressed = Input.GetKey(KeyCode.LeftShift);
+
+            if (forwardPressed && _velocity < 1.0f)
             {
-                animator.SetBool(IsWalkingHash, forwardPressed);
+                _velocity += Time.deltaTime * Acceleration;
+                _velocity = Mathf.Min(_velocity, 1.0f);
             }
-            
-            if (runningPressed != isRunning)
+
+            if (!forwardPressed && _velocity > 0.0f)
             {
-                animator.SetBool(IsRunningHash, runningPressed);
+                _velocity -= Time.deltaTime * Deceleration;
+                _velocity = Mathf.Max(_velocity, 0.0f);
             }
+
+            animator.SetFloat(VelocityHash, _velocity);
         }
     }
 }
