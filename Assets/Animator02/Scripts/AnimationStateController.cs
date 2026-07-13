@@ -24,8 +24,11 @@ namespace Animator02
         [SerializeField]
         private Animator animator;
 
-        private const float Acceleration = 0.1f;
-        private const float Deceleration = 0.5f;
+        private const float Acceleration = 0.4f;
+        private const float Deceleration = 0.6f;
+
+        private const float MaxWalkVelocity = 0.1f;
+        private const float MaxRunVelocity = 0.7f;
 
         private float _velocity = 0;
 
@@ -45,18 +48,30 @@ namespace Animator02
         private void Update()
         {
             var forwardPressed = Input.GetKey(KeyCode.W);
-            // var runningPressed = Input.GetKey(KeyCode.LeftShift);
+            var runningPressed = Input.GetKey(KeyCode.LeftShift);
 
-            if (forwardPressed && _velocity < 1.0f)
+            var currentMaxVelocity = runningPressed ? MaxRunVelocity : MaxWalkVelocity;
+
+            if (forwardPressed)
             {
-                _velocity += Time.deltaTime * Acceleration;
-                _velocity = Mathf.Min(_velocity, 1.0f);
+                if (_velocity < currentMaxVelocity)
+                {
+                    _velocity += Time.deltaTime * Acceleration;
+                    _velocity = Mathf.Min(_velocity, currentMaxVelocity);
+                }
+                else
+                {
+                    _velocity -= Time.deltaTime * Deceleration;
+                    _velocity = Mathf.Max(_velocity, currentMaxVelocity);
+                }
             }
-
-            if (!forwardPressed && _velocity > 0.0f)
+            else
             {
-                _velocity -= Time.deltaTime * Deceleration;
-                _velocity = Mathf.Max(_velocity, 0.0f);
+                if (_velocity > 0.0f)
+                {
+                    _velocity -= Time.deltaTime * Deceleration;
+                    _velocity = Mathf.Max(_velocity, 0.0f);
+                }
             }
 
             animator.SetFloat(VelocityHash, _velocity);
