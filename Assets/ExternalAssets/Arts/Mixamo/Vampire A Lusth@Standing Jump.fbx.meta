@@ -18,27 +18,27 @@ ModelImporter:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Vampire_diffuse
-    second: {fileID: 2800000, guid: bed76c4aec4fd324084f82ee28481176, type: 3}
+    second: {fileID: 2800000, guid: c0fe061775a848843b39c8272b61da44, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Vampire_diffuse_transparent
-    second: {fileID: 2800000, guid: 50cf9422f73a1894ea74d510182e2456, type: 3}
+    second: {fileID: 2800000, guid: 1efe02f76aacb3e40901adf836661b43, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Vampire_emission
-    second: {fileID: 2800000, guid: aec3e491dd33a034382c63c5eab34fb2, type: 3}
+    second: {fileID: 2800000, guid: a8aca155d75b92547b620ab25a303adc, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Vampire_normal
-    second: {fileID: 2800000, guid: 41638a43fd121774ab52c0feb2c1420a, type: 3}
+    second: {fileID: 2800000, guid: e15d18a3371fc76439a34a3a72486c00, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Vampire_specular
-    second: {fileID: 2800000, guid: 434ef9576c9e96045881754722ab17e0, type: 3}
+    second: {fileID: 2800000, guid: 96100282832f19d45b1ef4f5ace21e3c, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -59,7 +59,7 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 3
+    animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -128,13 +128,13 @@ ModelImporter:
     globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
-    hasExtraRoot: 1
+    hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
-  animationType: 3
+  animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 1
+  avatarSetup: 0
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   importBlendShapeDeformPercent: 1
   remapMaterialsIfMaterialImportModeIsNone: 0
