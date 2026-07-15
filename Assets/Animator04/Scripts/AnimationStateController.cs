@@ -19,7 +19,7 @@ namespace Animator04
 {
     public class AnimationStateController : MonoBehaviour
     {
-        private static readonly int IsJump = Animator.StringToHash("IsJump");
+        private static readonly int IsJump = Animator.StringToHash("IsJump04");
 
         [SerializeField]
         private Animator animator;
